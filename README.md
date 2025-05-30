@@ -10,11 +10,14 @@ A modern inventory tracking application built with **React**, **TypeScript**, **
 - [React Router](https://reactrouter.com/)
 - [TanStack Query](https://tanstack.com/query/latest)
 - [Firebase](https://firebase.google.com/)
+- [React Hook Form](https://react-hook-form.com/)
+- [Zod](https://github.com/colinhacks/zod)
 
 ## Features
 
 - Firebase authentication
 - Data fetching & caching with TanStack Query
+- Client-side form validation with Zod
 - Styling with Tailwind CSS
 - Product showcase and alert display for low stock
 - Inventory add/edit/delete with forms
