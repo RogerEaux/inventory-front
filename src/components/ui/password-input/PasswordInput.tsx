@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import EyeHidden from '../../assets/svg/eye-hidden.svg?react';
-import EyeShown from '../../assets/svg/eye-shown.svg?react';
+import EyeHidden from '@/assets/svg/eye-hidden.svg?react';
+import EyeShown from '@/assets/svg/eye-shown.svg?react';
 import Button from '@/components/ui/button';
 import Input from '@/components/ui/input';
 

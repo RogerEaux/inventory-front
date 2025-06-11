@@ -9,7 +9,8 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: 'bg-highlights shadow-xs hover:bg-dark-highlights text-black',
+        default:
+          'bg-highlights shadow-xs hover:bg-dark-highlights focus-visible:bg-dark-highlights text-black',
         icon: 'bg-transparent p-0',
       },
     },

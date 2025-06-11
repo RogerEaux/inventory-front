@@ -1,4 +1,4 @@
-import GridLogo from '../../assets/svg/grid-icon.svg?react';
+import GridLogo from '@/assets/svg/grid-icon.svg?react';
 import LoginForm from './login-form/LoginForm';
 
 export default function LoginFooter() {
@@ -7,7 +7,7 @@ export default function LoginFooter() {
       <div className="flex flex-1 items-center">
         <LoginForm />
       </div>
-      <section className="max-xs:px-16 max-xs:p-16 max-xs:flex-col max-xs:items-center max-xs:gap-8 flex w-full justify-between px-64 py-24">
+      <section className="flex w-full justify-between px-64 py-24 max-sm:flex-col max-sm:items-center max-sm:gap-8 max-sm:p-16 max-sm:px-16">
         <div className="flex gap-12">
           <GridLogo />
           <p className="text-lg">Grid Dynamics</p>

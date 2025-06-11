@@ -1,10 +1,7 @@
 import { useForm } from 'react-hook-form';
-import {
-  loginSchema,
-  type LoginFormValues,
-} from '../../../schemas/loginSchema';
+import { loginSchema, type LoginFormValues } from '@/schemas/form/loginSchema';
 import { zodResolver } from '@hookform/resolvers/zod';
-import PasswordInput from '../../../components/password-input/PasswordInput';
+import PasswordInput from '@/components/ui/password-input/PasswordInput';
 import Input from '@/components/ui/input';
 import LoginError from '../LoginError';
 import { useNavigate } from 'react-router-dom';

@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import 'tw-animate-css';
 
 @theme {
   /* Spacing */
@@ -8,6 +9,8 @@
   --text-base: 1.6rem;
   --text-lg: 1.8rem;
   --text-xl: 2.2rem;
+  --text-2xl: 2.6rem;
+  --text-3xl: 3.2rem;
 
   /* Colours */
   --color-black: #4a4a4a;
@@ -23,7 +26,8 @@
   --shadow-input: 0 0 0.4rem 0 var(--color-gray);
 
   /* Media */
-  --breakpoint-xs: 500px;
+  --breakpoint-sm: 500px;
+  --breakpoint-md: 800px;
 }
 
 :root {

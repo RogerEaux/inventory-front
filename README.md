@@ -1,6 +1,6 @@
-# Inventory Management App (Gridentory)
+# Inventory Management App (GD Inventory)
 
-A modern inventory tracking application built with **React**, **TypeScript**, **Firebase**, and **Tailwind CSS**.
+A modern inventory tracking application built with **React**, **TypeScript** and **Tailwind CSS**.
 
 ## Tech Stack
 
@@ -9,9 +9,12 @@ A modern inventory tracking application built with **React**, **TypeScript**, **
 - [Tailwind CSS](https://tailwindcss.com/)
 - [React Router](https://reactrouter.com/)
 - [TanStack Query](https://tanstack.com/query/latest)
+- [TanStack Table](https://tanstack.com/table/latest)
 - [Firebase](https://firebase.google.com/)
 - [React Hook Form](https://react-hook-form.com/)
 - [Zod](https://github.com/colinhacks/zod)
+- [RTL + Vitest](https://testing-library.com/docs/)
+- [Shadcn](https://ui.shadcn.com/)
 
 ## Features
 
@@ -19,17 +22,19 @@ A modern inventory tracking application built with **React**, **TypeScript**, **
 - Data fetching & caching with TanStack Query
 - Client-side form validation with Zod
 - Styling with Tailwind CSS
+- Component library with Shadcn
+- Table structured data with filtering with Tanstack Table
 - Product showcase and alert display for low stock
-- Inventory add/edit/delete with forms
-- Global, account and product transaction history tracking
+- Inventory and user add/edit/delete with forms
+- Global, product and account transaction history tracking
 
 ## Run locally
 
 1. **Clone the Repository**
 
 ```bash
-git clone https://github.com/Roberto-Mere/gridentory-front.git
-cd inventory-app
+git clone git@gitlab.griddynamics.net:gd-inventory/gd-inventory-front.git
+cd gd-inventory-front
 ```
 
 2. **Install Dependencies**

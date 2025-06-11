@@ -3,12 +3,13 @@ import { cn } from '@/lib/utils';
 import { forwardRef, type InputHTMLAttributes } from 'react';
 
 const inputVariants = cva(
-  'placeholder:text-gray bg-white rounded-md p-12 text-base outline-none focus-visible:ring-2 transition-all',
+  'placeholder:text-gray bg-white rounded-md p-12 text-lg outline-none focus-visible:ring-2 transition-all',
   {
     variants: {
       variant: {
         default: '',
-        login: 'w-md shadow-input rounded-none text-lg',
+        login: 'w-md shadow-input rounded-none',
+        search: 'w-full bg-light-gray rounded-l-none focus-visible:ring-0',
       },
     },
     defaultVariants: {

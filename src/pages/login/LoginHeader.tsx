@@ -1,4 +1,4 @@
-import LoginIcon from '../../assets/svg/login-icon.svg?react';
+import LoginIcon from '@/assets/svg/login-icon.svg?react';
 
 export default function LoginHeader() {
   return (

@@ -1,4 +1,4 @@
-import AlertIcon from '../../assets/svg/alert.svg?react';
+import AlertIcon from '@/assets/svg/alert.svg?react';
 
 interface Props {
   message: string;

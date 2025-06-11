@@ -3,10 +3,10 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import PasswordInput from './PasswordInput';
 
-vi.mock('../../assets/svg/eye-hidden.svg', () => ({
+vi.mock('@/assets/svg/eye-hidden.svg', () => ({
   default: () => <svg data-testid="mock-icon" />,
 }));
-vi.mock('../../assets/svg/eye-shown.svg', () => ({
+vi.mock('@/assets/svg/eye-shown.svg', () => ({
   default: () => <svg data-testid="mock-icon" />,
 }));
 
