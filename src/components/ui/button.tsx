@@ -5,12 +5,16 @@ import { cva, type VariantProps } from 'class-variance-authority';
 import { cn } from '@/lib/utils';
 
 const buttonVariants = cva(
-  'inline-flex items-center justify-center rounded font-bold transition-all focus-visible:ring-2 cursor-pointer text-base p-12 outline-none',
+  'inline-flex items-center justify-center rounded font-bold transition-all focus-visible:ring-2 cursor-pointer text-base py-12 px-16 outline-none',
   {
     variants: {
       variant: {
         default:
-          'bg-highlights shadow-xs hover:bg-dark-highlights focus-visible:bg-dark-highlights text-black',
+          'bg-highlights hover:bg-dark-highlights focus-visible:bg-dark-highlights text-black',
+        cancel:
+          'bg-error hover:bg-dark-error focus-visible:bg-dark-error text-white ring-black',
+        iconBackground:
+          'bg-highlights hover:bg-dark-highlights focus-visible:bg-dark-highlights px-12',
         icon: 'bg-transparent p-0',
       },
     },

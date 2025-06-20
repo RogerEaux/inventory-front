@@ -1,4 +1,4 @@
-import { userSchema, type User } from '@/schemas/table/userSchema';
+import { userSchema, type User } from '@/schemas/general/userSchema';
 import DataTable from '@/components/ui/data-table/DataTable';
 import { usersData } from './usersData';
 import { columns } from './columns';

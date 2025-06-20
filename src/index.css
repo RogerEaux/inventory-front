@@ -6,6 +6,7 @@
   --spacing: 1px;
 
   /* Font Size */
+  --text-sm: 1.4rem;
   --text-base: 1.6rem;
   --text-lg: 1.8rem;
   --text-xl: 2.2rem;
@@ -19,7 +20,8 @@
   --color-light-gray: #f7f7f7;
   --color-highlights: #ffc102;
   --color-dark-highlights: #e7ae00;
-  --color-error: #e15e36;
+  --color-error: #c3441d;
+  --color-dark-error: #a93a19;
 
   /* Shadow */
   --shadow-background: 0 -0.4rem 0.8rem -0.6rem var(--color-gray);

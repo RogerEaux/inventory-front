@@ -16,7 +16,7 @@ export default function HeaderDrawer() {
   return (
     <Sheet>
       <SheetTrigger asChild>
-        <Button variant="icon" className="p-3">
+        <Button variant="icon" className="p-3" aria-label="Menu">
           <HamburgerIcon height={30} width={30} />
         </Button>
       </SheetTrigger>

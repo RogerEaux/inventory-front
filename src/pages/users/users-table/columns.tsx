@@ -1,4 +1,4 @@
-import { type User } from '@/schemas/table/userSchema';
+import { type User } from '@/schemas/general/userSchema';
 import { type ColumnDef } from '@tanstack/react-table';
 import UserActions from './UserActions';
 
@@ -14,8 +14,9 @@ export const columns: ColumnDef<User>[] = [
   {
     accessorKey: 'actions',
     header: 'Actions',
-    cell: () => {
-      return <UserActions />;
+    cell: ({ row }) => {
+      const user = row.original;
+      return <UserActions user={user} />;
     },
   },
 ];

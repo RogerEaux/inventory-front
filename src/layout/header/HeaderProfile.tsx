@@ -6,6 +6,7 @@ export default function HeaderProfile() {
     <Link
       to="/profile"
       className="rounded-full bg-white p-5 transition-all outline-none hover:scale-105 focus-visible:scale-105 focus-visible:ring-2"
+      aria-label="Profile"
     >
       <DefaultAvatar height={30} width={30} />
     </Link>

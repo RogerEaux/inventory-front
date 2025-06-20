@@ -1,6 +1,7 @@
 import Button from '@/components/ui/button';
 import Plus from '@/assets/svg/plus.svg?react';
-import UsersTable from './users-table/UsersTable';
+import UsersTable from '../users-table/UsersTable';
+import UsersModal from '../UsersModal';
 
 export default function User() {
   return (
@@ -10,9 +11,15 @@ export default function User() {
           <h1 className="text-3xl font-bold text-nowrap max-sm:text-2xl">
             User Management
           </h1>
-          <Button title="Add user" className="max-sm:p-8">
-            <Plus height={24} width={24} strokeWidth={4} />
-          </Button>
+          <UsersModal type="add">
+            <Button
+              title="Add user"
+              className="max-sm:p-8"
+              variant="iconBackground"
+            >
+              <Plus height={24} width={24} strokeWidth={4} />
+            </Button>
+          </UsersModal>
         </div>
         <UsersTable />
       </div>

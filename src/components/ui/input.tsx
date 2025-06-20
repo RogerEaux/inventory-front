@@ -7,7 +7,7 @@ const inputVariants = cva(
   {
     variants: {
       variant: {
-        default: '',
+        default: 'w-full border border-black text-base',
         login: 'w-md shadow-input rounded-none',
         search: 'w-full bg-light-gray rounded-l-none focus-visible:ring-0',
       },
