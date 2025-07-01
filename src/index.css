@@ -22,6 +22,9 @@
   --color-dark-highlights: #e7ae00;
   --color-error: #c3441d;
   --color-dark-error: #a93a19;
+  --color-stock-green: #2e8b57;
+  --color-stock-yellow: #fafa33;
+  --color-stock-red: #ff3131;
 
   /* Shadow */
   --shadow-background: 0 -0.4rem 0.8rem -0.6rem var(--color-gray);
@@ -30,6 +33,8 @@
   /* Media */
   --breakpoint-sm: 500px;
   --breakpoint-md: 800px;
+  --breakpoint-lg: 1000px;
+  --breakpoint-xl: 1200px;
 
   /* Animation */
   --animate-slide-dot: slideDot 0.75s infinite ease-in-out;

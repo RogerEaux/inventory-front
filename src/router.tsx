@@ -4,6 +4,7 @@ import Root from './layout/Root';
 import Users from './pages/users/users-page/Users';
 import ErrorPage from './layout/ErrorPage';
 import ProtectedRoute from './layout/routes/ProtectedRoute';
+import Products from './pages/products/Products';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +17,7 @@ const router = createBrowserRouter([
     children: [
       { index: true, element: <Navigate to="/login" replace /> },
       { path: '/users', element: <Users /> },
+      { path: '/products', element: <Products /> },
     ],
     errorElement: <ErrorPage />,
   },
