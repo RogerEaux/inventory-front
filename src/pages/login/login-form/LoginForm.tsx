@@ -4,8 +4,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import PasswordInput from '@/components/ui/password-input/PasswordInput';
 import Input from '@/components/ui/input';
 import LoginError from '../LoginError';
-import { useNavigate } from 'react-router-dom';
 import Button from '@/components/ui/button';
+import { useLoginMutation } from '@/hooks/services/useLoginMutation';
+import { useAuthRedirect } from '@/hooks/utils/useAuthRedirect';
+import { useAuthStore } from '@/stores/useAuthStore';
 
 export default function LoginForm() {
   const {
@@ -15,11 +17,15 @@ export default function LoginForm() {
   } = useForm<LoginFormValues>({
     resolver: zodResolver(loginSchema),
   });
-  const navigate = useNavigate();
+  useAuthRedirect();
+  const { mutate, isPending, error } = useLoginMutation();
+  const loading = useAuthStore((state) => state.loading);
+
+  const errorMessage =
+    errors.email?.message ?? errors.password?.message ?? error?.message;
 
   function onValidSumbit(data: LoginFormValues) {
-    console.log('Submitting:', data);
-    navigate('/');
+    mutate({ email: data.email, password: data.password });
   }
 
   return (
@@ -29,13 +35,7 @@ export default function LoginForm() {
       aria-label="login"
       noValidate
     >
-      {(errors.login?.message && (
-        <LoginError message={errors.login.message} />
-      )) ||
-        (errors.email?.message && (
-          <LoginError message={errors.email.message} />
-        ))}
-
+      {errorMessage && <LoginError message={errorMessage} />}
       <div>
         <label htmlFor="email" className="hidden"></label>
         <Input
@@ -48,7 +48,11 @@ export default function LoginForm() {
         />
       </div>
       <PasswordInput {...register('password')} />
-      <Button type="submit" className="mt-32 w-full text-lg">
+      <Button
+        type="submit"
+        className="mt-32 w-full text-lg"
+        disabled={isPending || loading}
+      >
         Sign in
       </Button>
     </form>

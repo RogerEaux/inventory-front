@@ -1,6 +1,6 @@
 import { type ColumnDef } from '@tanstack/react-table';
 import SearchBar from '@/components/ui/SearchBar';
-import { useSearchSync } from '@/hooks/useSearchSync';
+import { useSearchSync } from '@/hooks/utils/useSearchSync';
 import DataTableStructure from './DataTableStructure';
 
 interface Props<TData, TValue> {

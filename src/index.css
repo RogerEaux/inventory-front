@@ -30,6 +30,19 @@
   /* Media */
   --breakpoint-sm: 500px;
   --breakpoint-md: 800px;
+
+  /* Animation */
+  --animate-slide-dot: slideDot 0.75s infinite ease-in-out;
+
+  @keyframes slideDot {
+    100%,
+    0% {
+      transform: translateY(0) scale(1);
+    }
+    50% {
+      transform: translateY(-150%) scale(1.3);
+    }
+  }
 }
 
 :root {
