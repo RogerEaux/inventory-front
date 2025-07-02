@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import GridIcon from '@/assets/svg/grid-icon.svg?react';
 import HeaderLinks from './HeaderLinks';
-import { links } from './linksData';
 import HeaderDrawer from './HeaderDrawer';
 import HeaderProfile from './HeaderProfile';
 
@@ -16,7 +15,7 @@ export default function Header() {
         <p className="text-xl font-bold text-black">Grid Dynamics</p>
       </Link>
       <div className="flex items-center gap-36 max-md:hidden">
-        <HeaderLinks links={links} />
+        <HeaderLinks />
         <HeaderProfile />
       </div>
       <div className="md:hidden">

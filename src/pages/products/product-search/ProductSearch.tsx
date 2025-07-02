@@ -1,6 +1,6 @@
 import SearchBar from '@/components/ui/SearchBar';
 import ProductList from '../ProductList';
-import { useSearchSync } from '@/hooks/useSearchSync';
+import { useSearchSync } from '@/hooks/utils/useSearchSync';
 import { productsData } from './productsData';
 import type { ProductPreview } from '@/schemas/form/productSchema';
 

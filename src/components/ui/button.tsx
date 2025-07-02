@@ -16,6 +16,8 @@ const buttonVariants = cva(
         iconBackground:
           'bg-highlights hover:bg-dark-highlights focus-visible:bg-dark-highlights px-12',
         icon: 'bg-transparent p-0',
+        select:
+          'bg-white justify-start px-12 border-black border transition-all font-normal cursor-default',
       },
     },
     defaultVariants: {

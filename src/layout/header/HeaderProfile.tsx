@@ -1,10 +1,11 @@
 import { Link } from 'react-router-dom';
 import DefaultAvatar from '@/assets/svg/avatar.svg?react';
 
-export default function HeaderProfile() {
+export default function HeaderProfile({ ...props }) {
   return (
     <Link
       to="/profile"
+      {...props}
       className="rounded-full bg-white p-5 transition-all outline-none hover:scale-105 focus-visible:scale-105 focus-visible:ring-2"
       aria-label="Profile"
     >

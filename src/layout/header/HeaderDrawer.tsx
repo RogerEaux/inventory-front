@@ -10,7 +10,6 @@ import Button from '@/components/ui/button';
 import HamburgerIcon from '@/assets/svg/hamburger.svg?react';
 import HeaderProfile from './HeaderProfile';
 import HeaderLinks from './HeaderLinks';
-import { links } from './linksData';
 
 export default function HeaderDrawer() {
   return (
@@ -27,7 +26,7 @@ export default function HeaderDrawer() {
             <HeaderProfile />
           </SheetClose>
         </SheetHeader>
-        <HeaderLinks links={links} drawer />
+        <HeaderLinks drawer />
       </SheetContent>
     </Sheet>
   );

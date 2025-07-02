@@ -1,7 +1,7 @@
 import type { PropsWithChildren } from 'react';
 
 interface Props {
-  id: string;
+  id?: string;
   label: string;
   error: string;
 }

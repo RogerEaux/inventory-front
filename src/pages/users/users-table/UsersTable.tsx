@@ -1,12 +1,51 @@
-import { userSchema, type User } from '@/schemas/general/userSchema';
 import DataTable from '@/components/ui/data-table/DataTable';
-import { usersData } from './usersData';
 import { columns } from './columns';
+import { useGetAllUsersQuery } from '@/hooks/services/useGetAllUsersQuery';
+import Loading from '@/components/ui/Loading';
+import type { departmentTypes, roleTypes } from '../users-form/roleOptions';
+import ErrorElement from '@/components/ui/ErrorElement';
+import { useQueryClient } from '@tanstack/react-query';
+
+interface UsersResponse {
+  getAllUsers: [
+    {
+      id: string;
+      name: string;
+      email: string;
+      roles: [
+        {
+          department: departmentTypes;
+          role: roleTypes;
+        },
+      ];
+    },
+  ];
+}
 
 export default function UsersTable() {
-  const validatedData = usersData.filter(
-    (user) => userSchema.safeParse(user).success,
-  ) as User[];
+  const { data, isPending, error } = useGetAllUsersQuery();
+  const users = (data as UsersResponse)?.getAllUsers.map((user) => ({
+    ...user,
+    roles: user.roles.map((role) => role.role),
+    department: user.roles[0].department,
+  }));
+  const queryClient = useQueryClient();
 
-  return <DataTable columns={columns} data={validatedData} search />;
+  const onRetry = () => queryClient.invalidateQueries({ queryKey: ['users'] });
+
+  if (isPending) {
+    return (
+      <div className="mt-64 flex w-full flex-1 items-center justify-center">
+        <Loading />
+      </div>
+    );
+  }
+
+  if (error) {
+    return <ErrorElement message={error?.message} onRetry={onRetry} />;
+  }
+
+  if (users) {
+    return <DataTable columns={columns} data={users} search />;
+  }
 }
