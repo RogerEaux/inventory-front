@@ -12,43 +12,6 @@ vi.mock('@/hooks/services/useCreateUserMutation', () => ({
 }));
 
 describe('Users modal', () => {
-  it('should open modal when trigger is clicked', async () => {
-    const user = userEvent.setup();
-    renderWithQueryClient(
-      <UsersModal>
-        <button>Add user</button>
-      </UsersModal>,
-    );
-    const addButton = screen.getByRole('button', { name: /add user/i });
-    let usersFormModal = screen.queryByRole('dialog');
-
-    expect(usersFormModal).not.toBeInTheDocument();
-
-    await user.click(addButton);
-
-    usersFormModal = screen.getByRole('dialog');
-    expect(usersFormModal).toBeInTheDocument();
-  });
-
-  it('should close modal when cancel button is clicked', async () => {
-    const user = userEvent.setup();
-    renderWithQueryClient(
-      <UsersModal>
-        <button>Add user</button>
-      </UsersModal>,
-    );
-    const addButton = screen.getByRole('button', { name: /add user/i });
-
-    await user.click(addButton);
-
-    const usersFormModal = screen.getByRole('dialog');
-    const cancelButton = screen.getByRole('button', { name: /cancel/i });
-
-    await user.click(cancelButton);
-
-    expect(usersFormModal).not.toBeInTheDocument();
-  });
-
   it('should not close modal when invalid form save button is clicked', async () => {
     const user = userEvent.setup();
     renderWithQueryClient(

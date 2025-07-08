@@ -1,5 +1,5 @@
-import ProductSearch from './product-search/ProductSearch';
-import ProductsHeader from './ProductsHeader';
+import ProductSearch from './product-search/ProductsSearch';
+import ProductsHeader from './products-header/ProductsHeader';
 
 export default function Products() {
   return (

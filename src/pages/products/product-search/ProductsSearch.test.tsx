@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
-import ProductSearch from './ProductSearch';
+import ProductSearch from './ProductsSearch';
 import userEvent from '@testing-library/user-event';
 
 vi.mock('react-router-dom', async () => {

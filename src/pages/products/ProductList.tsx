@@ -1,5 +1,5 @@
 import type { ProductPreview } from '@/schemas/form/productSchema';
-import ProductCard from './product-card/ProductCard';
+import ProductCard from './product-card/ProductsCard';
 
 interface Props {
   products: ProductPreview[];

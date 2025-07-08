@@ -1,17 +1,12 @@
 import { z } from 'zod';
 
-export const attributeSchema = z
-  .object({
-    name: z.string().optional(),
-    value: z.string().optional(),
-  })
-  .refine(({ name, value }) => (!name && !value) || (name && value), {
-    message: 'Both name and value are required if either is filled',
-    path: ['name'],
-  });
+export const attributeSchema = z.object({
+  name: z.string().min(1, 'Name is required'),
+  value: z.string().min(1, 'Value is required'),
+});
 
 export const stockByUseSchema = z.object({
-  useType: z.string().min(1, 'Use type is required'),
+  useType: z.string().min(1, 'Type is required'),
   quantity: z
     .number({ invalid_type_error: 'Quantity must be a number' })
     .int('Quantity must be a whole number')
@@ -26,7 +21,7 @@ export const productSchema = z
       .number({ invalid_type_error: 'Minimum stock must be a number' })
       .int('Minimum stock must be a whole number')
       .nonnegative('Minimum stock must be 0 or more'),
-    imageUrl: z.string().url('Image URL must be a valid URL'),
+    imageUrl: z.string().url('Image is required'),
     attributes: z.array(attributeSchema),
     stockByUse: z
       .array(stockByUseSchema)

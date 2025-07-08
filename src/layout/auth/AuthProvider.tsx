@@ -2,6 +2,10 @@ import { useEffect } from 'react';
 import { getIdTokenResult } from 'firebase/auth';
 import { useAuthStore } from '@/stores/useAuthStore';
 import { listenToAuthChange } from '@/services/auth';
+import type {
+  departmentTypes,
+  roleTypes,
+} from '@/pages/users/users-form/roleOptions';
 
 export default function AuthProvider() {
   const setAuth = useAuthStore((state) => state.setAuth);
@@ -14,10 +18,13 @@ export default function AuthProvider() {
         try {
           const tokenResult = await getIdTokenResult(firebaseUser, true);
           const { token, claims } = tokenResult;
+          const departments = claims.departments as departmentTypes[];
+
           setAuth({
             user: firebaseUser,
             token,
-            roles: (claims.roles || []) as string[],
+            roles: (claims.roles || []) as roleTypes[],
+            department: departments[0] || '',
             loading: false,
           });
         } catch {

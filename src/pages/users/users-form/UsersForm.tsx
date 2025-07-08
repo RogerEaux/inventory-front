@@ -18,6 +18,8 @@ import { useUpdateUserMutation } from '@/hooks/services/useUpdateUserMutation';
 export default function UsersForm() {
   const user = useUserFormStore((state) => state.user);
   const roles = useAuthStore((state) => state.roles);
+  const department = useAuthStore((state) => state.department);
+
   const closeRef = useRef<HTMLButtonElement>(null);
   const isEdit = !!user;
   const isAdmin = roles?.includes('ADMIN');
@@ -26,7 +28,7 @@ export default function UsersForm() {
     name: user?.name ?? '',
     email: user?.email ?? '',
     roles: user?.roles ?? [],
-    department: user?.department ?? 'SWAG',
+    department: user?.department ?? department ?? 'SWAG',
   };
 
   const {

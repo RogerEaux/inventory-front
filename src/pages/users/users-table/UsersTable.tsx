@@ -2,29 +2,12 @@ import DataTable from '@/components/ui/data-table/DataTable';
 import { columns } from './columns';
 import { useGetAllUsersQuery } from '@/hooks/services/useGetAllUsersQuery';
 import Loading from '@/components/ui/Loading';
-import type { departmentTypes, roleTypes } from '../users-form/roleOptions';
 import ErrorElement from '@/components/ui/ErrorElement';
 import { useQueryClient } from '@tanstack/react-query';
 
-interface UsersResponse {
-  getAllUsers: [
-    {
-      id: string;
-      name: string;
-      email: string;
-      roles: [
-        {
-          department: departmentTypes;
-          role: roleTypes;
-        },
-      ];
-    },
-  ];
-}
-
 export default function UsersTable() {
   const { data, isPending, error } = useGetAllUsersQuery();
-  const users = (data as UsersResponse)?.getAllUsers.map((user) => ({
+  const users = data?.getAllUsers.map((user) => ({
     ...user,
     roles: user.roles.map((role) => role.role),
     department: user.roles[0].department,
