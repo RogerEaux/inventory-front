@@ -13,26 +13,25 @@ export const stockByUseSchema = z.object({
     .nonnegative('Quantity must be 0 or more'),
 });
 
-export const productSchema = z
-  .object({
-    name: z.string().min(1, 'Product name is required'),
-    category: z.string().min(1, 'Category is required'),
-    minimumStock: z
-      .number({ invalid_type_error: 'Minimum stock must be a number' })
-      .int('Minimum stock must be a whole number')
-      .nonnegative('Minimum stock must be 0 or more'),
-    imageUrl: z.string().url('Image is required'),
-    attributes: z.array(attributeSchema),
-    stockByUse: z
-      .array(stockByUseSchema)
-      .min(1, 'At least one stock entry is required'),
-  })
-  .passthrough();
+export const productSchema = z.object({
+  name: z.string().min(1, 'Product name is required'),
+  category: z.string().min(1, 'Category is required'),
+  minimumStock: z
+    .number({ invalid_type_error: 'Minimum stock must be a number' })
+    .int('Minimum stock must be a whole number')
+    .nonnegative('Minimum stock must be 0 or more'),
+  imageUrl: z.string().url('Image is required'),
+  attributes: z.array(attributeSchema),
+  stockByUse: z
+    .array(stockByUseSchema)
+    .min(1, 'At least one stock entry is required'),
+});
 
-export type Product = z.infer<typeof productSchema>;
-export type ProductPreview = { id: string; stockQuantity: number } & Pick<
+export type ProductForm = z.infer<typeof productSchema>;
+export type Product = ProductForm & { id: string };
+export type ProductPreview = { stockQuantity: number } & Pick<
   Product,
-  'name' | 'imageUrl' | 'category' | 'minimumStock'
+  'id' | 'name' | 'imageUrl' | 'category' | 'minimumStock'
 >;
 export type Attribute = z.infer<typeof attributeSchema>;
 export type StockByUse = z.infer<typeof stockByUseSchema>;

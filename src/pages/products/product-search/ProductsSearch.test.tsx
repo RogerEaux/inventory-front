@@ -2,6 +2,7 @@ import { describe, expect, it } from 'vitest';
 import { render, screen, waitFor } from '@testing-library/react';
 import ProductSearch from './ProductsSearch';
 import userEvent from '@testing-library/user-event';
+import type { ReactNode } from 'react';
 
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom');
@@ -12,6 +13,7 @@ vi.mock('react-router-dom', async () => {
       new URLSearchParams({ search: '' }),
       setSearchParams,
     ],
+    Link: ({ children }: { children: ReactNode }) => <a href="/">{children}</a>,
   };
 });
 
@@ -28,6 +30,7 @@ vi.mock('@/pages/products/product-search/productsData.ts', () => {
           { useType: 'GENERAL', quantity: 12 },
           { useType: 'WELCOME_KIT', quantity: 4 },
         ],
+        attributes: [{ name: 'Size', value: 'Big' }],
       },
       {
         id: '2',
@@ -36,6 +39,11 @@ vi.mock('@/pages/products/product-search/productsData.ts', () => {
         category: 'ROPA_Y_TEXTILES',
         minimumStock: 2,
         stockByUse: [{ useType: 'EVENT', quantity: 4 }],
+        attributes: [
+          { name: 'Size', value: 'Medium' },
+          { name: 'Color', value: 'White' },
+          { name: 'Material', value: 'Organic Cotton' },
+        ],
       },
       {
         id: '3',
@@ -46,6 +54,11 @@ vi.mock('@/pages/products/product-search/productsData.ts', () => {
         stockByUse: [
           { useType: 'GENERAL', quantity: 0 },
           { useType: 'WELCOME_KIT', quantity: 3 },
+        ],
+        attributes: [
+          { name: 'Capacity', value: '750ml' },
+          { name: 'Material', value: 'Stainless Steel' },
+          { name: 'Color', value: 'Blue' },
         ],
       },
     ],

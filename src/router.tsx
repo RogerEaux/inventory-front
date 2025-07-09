@@ -6,6 +6,7 @@ import ErrorPage from './layout/ErrorPage';
 import ProtectedRoute from './layout/routes/ProtectedRoute';
 import Products from './pages/products/Products';
 import UnauthorisedPage from './layout/UnauthorisedPage';
+import ProductDetails from './pages/product-details/ProductDetails';
 
 const router = createBrowserRouter([
   {
@@ -25,7 +26,13 @@ const router = createBrowserRouter([
           </ProtectedRoute>
         ),
       },
-      { path: '/products', element: <Products /> },
+      {
+        path: '/products',
+        children: [
+          { index: true, element: <Products /> },
+          { path: ':productId', element: <ProductDetails /> },
+        ],
+      },
     ],
   },
   { path: '/login', element: <Login /> },

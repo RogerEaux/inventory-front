@@ -38,6 +38,7 @@
 
   /* Animation */
   --animate-slide-dot: slideDot 0.75s infinite ease-in-out;
+  --animate-fill-bar: fillBar 1.25s ease-out;
 
   @keyframes slideDot {
     100%,
@@ -46,6 +47,19 @@
     }
     50% {
       transform: translateY(-150%) scale(1.3);
+    }
+  }
+
+  @keyframes fillBar {
+    0% {
+      transform: scaleX(0);
+    }
+    50% {
+      transform: scaleX(0);
+    }
+    ,
+    100% {
+      transform: scaleX(1);
     }
   }
 }

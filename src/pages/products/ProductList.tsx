@@ -1,5 +1,6 @@
 import type { ProductPreview } from '@/schemas/form/productSchema';
 import ProductCard from './product-card/ProductsCard';
+import { Link } from 'react-router-dom';
 
 interface Props {
   products: ProductPreview[];
@@ -11,7 +12,11 @@ export default function ProductList({ products }: Props) {
       {products.length === 0 ? (
         <p className="col-span-full text-center text-lg">No results</p>
       ) : (
-        products.map((prod) => <ProductCard key={prod.id} {...prod} />)
+        products.map((prod) => (
+          <Link to={prod.id} key={prod.id}>
+            <ProductCard {...prod} />
+          </Link>
+        ))
       )}
     </div>
   );

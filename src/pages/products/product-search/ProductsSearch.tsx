@@ -7,13 +7,13 @@ import type { ProductPreview } from '@/schemas/form/productSchema';
 export default function ProductSearch() {
   const { inputValue, setInputValue, debouncedValue } = useSearchSync();
 
-  const mappedProducts = productsData.map((prod) => {
+  const mappedProducts: ProductPreview[] = productsData.map((prod) => {
     const stockQuantity = prod.stockByUse.reduce(
       (acc, curr) => acc + curr.quantity,
       0,
     );
     return { ...prod, stockQuantity };
-  }) as ProductPreview[];
+  });
   const filteredProducts = mappedProducts.filter(({ name }) =>
     name.toLowerCase().includes(debouncedValue.toLowerCase()),
   );
