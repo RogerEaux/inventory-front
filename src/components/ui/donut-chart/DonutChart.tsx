@@ -1,15 +1,20 @@
 import { PieChart, Pie, Cell } from 'recharts';
 import { donutColours } from './donutColours';
-import DonutLegend from './DonutLegend';
+import DonutValueForm from './DonutValueForm';
+
+export interface Entry {
+  name: string;
+  value: number;
+}
 
 interface Props {
-  data: { name: string; value: number }[];
+  data: Entry[];
   columnNames?: { name: string; value: string };
 }
 
 export default function DonutChart({ data, columnNames }: Props) {
   return (
-    <div className="flex h-[15rem] w-full items-center justify-center gap-48 max-sm:h-full max-sm:flex-col">
+    <div className="flex w-full items-center justify-center gap-48 max-md:flex-col max-sm:h-full">
       <div className="h-[15rem]">
         <PieChart width={150} height={150}>
           <Pie
@@ -39,7 +44,7 @@ export default function DonutChart({ data, columnNames }: Props) {
           </Pie>
         </PieChart>
       </div>
-      <DonutLegend data={data} columnNames={columnNames} />
+      <DonutValueForm entries={data} columnNames={columnNames} />
     </div>
   );
 }
