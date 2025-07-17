@@ -11,6 +11,8 @@ const buttonVariants = cva(
       variant: {
         default:
           'bg-highlights hover:bg-dark-highlights focus-visible:bg-dark-highlights text-black',
+        small:
+          'bg-highlights hover:bg-dark-highlights focus-visible:bg-dark-highlights text-black px-12 py-8',
         cancel:
           'bg-error hover:bg-dark-error focus-visible:bg-dark-error text-white ring-black',
         iconBackground:
