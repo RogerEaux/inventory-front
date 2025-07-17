@@ -8,7 +8,7 @@ export default function Header() {
   return (
     <header className="bg-highlights flex max-h-80 flex-none items-center justify-between px-48 py-24 max-sm:px-24">
       <Link
-        to="/"
+        to="/products"
         className="flex items-center gap-16 outline-none focus-visible:ring-2"
       >
         <GridIcon height={36} width={36} />

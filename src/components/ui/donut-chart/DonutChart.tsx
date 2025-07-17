@@ -4,9 +4,10 @@ import DonutLegend from './DonutLegend';
 
 interface Props {
   data: { name: string; value: number }[];
+  columnNames?: { name: string; value: string };
 }
 
-export default function DonutChart({ data }: Props) {
+export default function DonutChart({ data, columnNames }: Props) {
   return (
     <div className="flex h-[15rem] w-full items-center justify-center gap-48 max-sm:h-full max-sm:flex-col">
       <div className="h-[15rem]">
@@ -38,7 +39,7 @@ export default function DonutChart({ data }: Props) {
           </Pie>
         </PieChart>
       </div>
-      <DonutLegend data={data} />
+      <DonutLegend data={data} columnNames={columnNames} />
     </div>
   );
 }

@@ -6,11 +6,8 @@ export const attributeSchema = z.object({
 });
 
 export const stockByUseSchema = z.object({
-  useType: z.string().min(1, 'Type is required'),
-  quantity: z
-    .number({ invalid_type_error: 'Quantity must be a number' })
-    .int('Quantity must be a whole number')
-    .nonnegative('Quantity must be 0 or more'),
+  useType: z.string().min(1),
+  quantity: z.number().int().nonnegative(),
 });
 
 export const productSchema = z.object({
@@ -20,15 +17,30 @@ export const productSchema = z.object({
     .number({ invalid_type_error: 'Minimum stock must be a number' })
     .int('Minimum stock must be a whole number')
     .nonnegative('Minimum stock must be 0 or more'),
-  imageUrl: z.string().url('Image is required'),
+  fileBase64: z.string().min(1, 'Image is required'),
   attributes: z.array(attributeSchema),
-  stockByUse: z
-    .array(stockByUseSchema)
-    .min(1, 'At least one stock entry is required'),
+  stock: z
+    .number({ invalid_type_error: 'Stock must be a number' })
+    .int('Stock must be a whole number')
+    .gte(1, 'Stock must be 1 or more'),
 });
 
-export type ProductForm = z.infer<typeof productSchema>;
-export type Product = ProductForm & { id: string };
+export const productUpdateSchema = productSchema.omit({ stock: true }).extend({
+  fileBase64: z
+    .string()
+    .optional()
+    .refine((val) => !val || val.length >= 1, {
+      message: 'Image is required',
+    }),
+});
+
+export type ProductCreateForm = z.infer<typeof productSchema>;
+export type ProductUpdateForm = z.infer<typeof productUpdateSchema>;
+export type Product = Omit<ProductCreateForm, 'fileBase64' | 'stock'> & {
+  id: string;
+  imageUrl: string;
+  stockByUse: StockByUse[];
+};
 export type ProductPreview = { stockQuantity: number } & Pick<
   Product,
   'id' | 'name' | 'imageUrl' | 'category' | 'minimumStock'

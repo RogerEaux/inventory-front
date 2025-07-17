@@ -13,7 +13,7 @@ interface Props {
 export default function Toast({ id, message, type }: Props) {
   return (
     <div
-      className="flex w-max max-w-[35rem] items-center gap-8 rounded-md bg-white px-16 py-24 text-black shadow-lg"
+      className="flex w-max items-center gap-8 rounded-md bg-white px-16 py-24 text-black shadow-lg max-sm:max-w-[30rem]"
       aria-label="notification"
     >
       {type === 'success' && (

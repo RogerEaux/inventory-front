@@ -1,7 +1,8 @@
 import { describe, expect, it } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import ProductsHeader from './ProductsHeader';
+import { renderWithQueryClient } from '@/lib/test-utils';
 
 vi.mock('@/pages/users/users-form/UsersForm.tsx', () => ({
   default: () => <form role="form"></form>,
@@ -10,7 +11,7 @@ vi.mock('@/pages/users/users-form/UsersForm.tsx', () => ({
 describe('Products header', () => {
   it('should open add product form when add button is clicked', async () => {
     const user = userEvent.setup();
-    render(<ProductsHeader />);
+    renderWithQueryClient(<ProductsHeader />);
     const addButton = screen.getByRole('button', { name: /add product/i });
     let usersFormModal = screen.queryByRole('dialog');
 
@@ -23,7 +24,7 @@ describe('Products header', () => {
     expect(usersFormModal).toBeInTheDocument();
     expect(usersFormModal).toContainElement(screen.getByRole('form'));
     expect(usersFormModal).toContainElement(
-      screen.getByRole('heading', { name: /add new product/i }),
+      screen.getByRole('heading', { name: /add product/i }),
     );
   });
 });

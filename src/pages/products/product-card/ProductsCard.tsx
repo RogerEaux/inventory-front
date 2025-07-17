@@ -1,4 +1,5 @@
 import defaultProduct from '@/assets/svg/default-product.svg';
+import ImageWithFallback from '@/components/ui/ImageWithFallback';
 import type { ProductPreview } from '@/schemas/form/productSchema';
 
 export default function ProductCard({
@@ -17,10 +18,11 @@ export default function ProductCard({
 
   return (
     <article className="flex w-full max-w-[20rem] flex-col gap-4">
-      <img
-        src={imageUrl || defaultProduct}
+      <ImageWithFallback
+        src={imageUrl}
         alt={name}
-        className="mb-12 w-full"
+        fallback={defaultProduct}
+        className="mb-12 h-[16rem] w-full rounded-md object-cover"
       />
       <h2 className="text-base font-medium">{name}</h2>
       <div className="mt-auto flex items-center gap-12">

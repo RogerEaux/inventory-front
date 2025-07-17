@@ -8,6 +8,7 @@ interface Props {
 
 export default function ImageInput({ name }: Props) {
   const {
+    register,
     setValue,
     formState: { errors },
   } = useFormContext();
@@ -43,18 +44,24 @@ export default function ImageInput({ name }: Props) {
 
   const onDragLeave = () => setIsDragging(false);
 
+  const onInteract = () => inputRef.current?.click();
+
   const onChange = async (e: ChangeEvent<HTMLInputElement>) => {
     await handleFiles(e.target.files);
   };
 
+  register(name);
+
   return (
     <div className="relative col-span-2 max-md:col-span-1">
       <div
+        tabIndex={0}
         onDrop={onDrop}
         onDragOver={onDragOver}
         onDragLeave={onDragLeave}
-        onClick={() => inputRef.current?.click()}
-        className={`border-gray flex h-[16.4rem] w-full cursor-pointer items-center justify-center rounded-lg border-2 border-dashed py-32 text-center transition-all duration-200 max-sm:p-16 ${
+        onClick={onInteract}
+        onKeyDown={(e) => (e.key === 'Enter' ? onInteract() : null)}
+        className={`border-gray flex h-[16.4rem] w-full cursor-pointer items-center justify-center rounded-lg border-2 border-dashed py-32 text-center transition-all duration-200 outline-none focus-visible:ring-2 max-sm:p-16 ${
           isDragging
             ? 'border-black bg-black/25'
             : 'hover:border-black hover:bg-black/25'

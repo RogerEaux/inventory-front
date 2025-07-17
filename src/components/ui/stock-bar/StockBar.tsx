@@ -18,6 +18,7 @@ export default function StockBar({ current, min }: StockBarProps) {
     <div className="flex w-full flex-col gap-8">
       <div className="bg-gray/33 relative h-8 rounded-full">
         <div
+          data-testid="stock-indicator"
           className={`animate-fill-bar absolute top-0 left-0 h-full origin-left ${stockIndicator} ${percentage !== 100 ? 'rounded-l-full' : 'rounded-full'}`}
           style={{ width: `${percentage}%` }}
         />

@@ -1,11 +1,21 @@
 import { useParams } from 'react-router-dom';
-import { productsData } from '../products/product-search/productsData';
-import ProductFacts from './ProductFacts';
+import ProductFacts from './product-facts/ProductFacts';
 import ProductStock from './ProductStock';
+import { useQueryClient } from '@tanstack/react-query';
+import { useVisibleProductsByUser } from '@/hooks/services/useVisibleProductsByUser';
+import ErrorElement from '@/components/ui/ErrorElement';
+import Loading from '@/components/ui/Loading';
 
 export default function ProductDetails() {
   const { productId } = useParams<{ productId: string }>();
-  const productData = productsData.find((prod) => prod.id === productId)!;
+  const { data, isPending, error } = useVisibleProductsByUser();
+  const product = data?.visibleProductsByUser.find(
+    (prod) => prod.id === productId,
+  );
+
+  const queryClient = useQueryClient();
+  const onRetry = () =>
+    queryClient.invalidateQueries({ queryKey: ['products'] });
 
   return (
     <main className="flex flex-col items-center">
@@ -14,11 +24,21 @@ export default function ProductDetails() {
           Product Details
         </h1>
       </section>
-      <ProductFacts {...productData} />
-      <ProductStock
-        stockByUse={productData.stockByUse}
-        minimumStock={productData.minimumStock}
-      />
+      {isPending && (
+        <div className="mt-64 flex w-full flex-1 items-center justify-center">
+          <Loading />
+        </div>
+      )}
+      {error && <ErrorElement message={error?.message} onRetry={onRetry} />}
+      {product && (
+        <>
+          <ProductFacts product={product} />
+          <ProductStock
+            stockByUse={product.stockByUse}
+            minimumStock={product.minimumStock}
+          />
+        </>
+      )}
     </main>
   );
 }

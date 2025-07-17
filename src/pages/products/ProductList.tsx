@@ -13,7 +13,11 @@ export default function ProductList({ products }: Props) {
         <p className="col-span-full text-center text-lg">No results</p>
       ) : (
         products.map((prod) => (
-          <Link to={prod.id} key={prod.id}>
+          <Link
+            to={prod.id}
+            key={prod.id}
+            className="w-full outline-none focus-visible:ring-2"
+          >
             <ProductCard {...prod} />
           </Link>
         ))
