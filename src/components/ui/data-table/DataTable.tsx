@@ -1,4 +1,4 @@
-import { type ColumnDef } from '@tanstack/react-table';
+import { type ColumnDef, type SortingState } from '@tanstack/react-table';
 import SearchBar from '@/components/ui/SearchBar';
 import { useSearchSync } from '@/hooks/utils/useSearchSync';
 import DataTableStructure from './DataTableStructure';
@@ -7,12 +7,16 @@ interface Props<TData, TValue> {
   columns: ColumnDef<TData, TValue>[];
   data: TData[];
   search?: boolean;
+  pagination?: boolean;
+  sorting?: SortingState;
 }
 
 export default function DataTable<TData, TValue>({
   columns,
   data,
   search,
+  pagination,
+  sorting,
 }: Props<TData, TValue>) {
   const { inputValue, setInputValue, debouncedValue } = useSearchSync();
 
@@ -23,6 +27,8 @@ export default function DataTable<TData, TValue>({
         data={data}
         columns={columns}
         globalFilter={debouncedValue}
+        pagination={pagination}
+        sorting={sorting}
       />
     </div>
   );
