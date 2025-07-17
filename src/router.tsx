@@ -7,6 +7,7 @@ import ProtectedRoute from './layout/routes/ProtectedRoute';
 import Products from './pages/products/Products';
 import UnauthorisedPage from './layout/UnauthorisedPage';
 import ProductDetails from './pages/product-details/ProductDetails';
+import History from './pages/history/History';
 
 const router = createBrowserRouter([
   {
@@ -32,6 +33,10 @@ const router = createBrowserRouter([
           { index: true, element: <Products /> },
           { path: ':productId', element: <ProductDetails /> },
         ],
+      },
+      {
+        path: '/history',
+        element: <History />,
       },
     ],
   },
